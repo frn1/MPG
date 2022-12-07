@@ -70,8 +70,8 @@
 #define GAMEPAD_MASK_DPAD (GAMEPAD_MASK_UP | GAMEPAD_MASK_DOWN | GAMEPAD_MASK_LEFT | GAMEPAD_MASK_RIGHT)
 
 #define GAMEPAD_JOYSTICK_MIN 0
-#define GAMEPAD_JOYSTICK_MID 0x7FFF
-#define GAMEPAD_JOYSTICK_MAX 0xFFFF
+#define GAMEPAD_JOYSTICK_MID 0x7F
+#define GAMEPAD_JOYSTICK_MAX 0xFF
 
 const uint8_t dpadMasks[] =
 {
@@ -104,16 +104,16 @@ struct GamepadState
 	uint8_t dpad {0};
 	uint16_t buttons {0};
 	uint16_t aux {0};
-	uint16_t lx {GAMEPAD_JOYSTICK_MID};
-	uint16_t ly {GAMEPAD_JOYSTICK_MID};
-	uint16_t rx {GAMEPAD_JOYSTICK_MID};
-	uint16_t ry {GAMEPAD_JOYSTICK_MID};
+	uint8_t lx {GAMEPAD_JOYSTICK_MID};
+	uint8_t ly {GAMEPAD_JOYSTICK_MID};
+	uint8_t rx {GAMEPAD_JOYSTICK_MID};
+	uint8_t ry {GAMEPAD_JOYSTICK_MID};
 	uint8_t lt {0};
 	uint8_t rt {0};
 };
 
 // Convert the horizontal GamepadState dpad axis value into an analog value
-inline uint16_t dpadToAnalogX(uint8_t dpad)
+inline uint8_t dpadToAnalogX(uint8_t dpad)
 {
 	switch (dpad & (GAMEPAD_MASK_LEFT | GAMEPAD_MASK_RIGHT))
 	{
@@ -129,7 +129,7 @@ inline uint16_t dpadToAnalogX(uint8_t dpad)
 }
 
 // Convert the vertical GamepadState dpad axis value into an analog value
-inline uint16_t dpadToAnalogY(uint8_t dpad)
+inline uint8_t dpadToAnalogY(uint8_t dpad)
 {
 	switch (dpad & (GAMEPAD_MASK_UP | GAMEPAD_MASK_DOWN))
 	{
