@@ -105,10 +105,10 @@ HIDReport *MPG::getHIDReport()
 		| (pressedA2() ? HID_MASK_TP       : 0)
 	;
 
-	hidReport.lx = static_cast<uint8_t>(state.lx >> 8);
-	hidReport.ly = static_cast<uint8_t>(state.ly >> 8);
-	hidReport.rx = static_cast<uint8_t>(state.rx >> 8);
-	hidReport.ry = static_cast<uint8_t>(state.ry >> 8);
+	hidReport.lx = state.lx;
+	hidReport.ly = state.ly;
+	hidReport.rx = state.rx;
+	hidReport.ry = state.ry;
 
 	return &hidReport;
 }
@@ -146,10 +146,10 @@ SwitchReport *MPG::getSwitchReport()
 		| (pressedA2() ? SWITCH_MASK_CAPTURE : 0)
 	;
 
-	switchReport.lx = static_cast<uint8_t>(state.lx >> 8);
-	switchReport.ly = static_cast<uint8_t>(state.ly >> 8);
-	switchReport.rx = static_cast<uint8_t>(state.rx >> 8);
-	switchReport.ry = static_cast<uint8_t>(state.ry >> 8);
+	switchReport.lx = state.lx;
+	switchReport.ly = state.ly;
+	switchReport.rx = state.rx;
+	switchReport.ry = state.ry;
 
 	return &switchReport;
 }
