@@ -110,6 +110,8 @@ HIDReport *MPG::getHIDReport()
 	hidReport.rx = state.rx;
 	hidReport.ry = state.ry;
 
+	printf("%X", hidReport.lx);
+
 	return &hidReport;
 }
 
@@ -150,6 +152,8 @@ SwitchReport *MPG::getSwitchReport()
 	switchReport.ly = state.ly;
 	switchReport.rx = state.rx;
 	switchReport.ry = state.ry;
+
+	printf("%X", switchReport.lx);
 
 	return &switchReport;
 }
